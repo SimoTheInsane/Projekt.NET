@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="jumbotron">
+        <h4>Is it good now??</h4>
+        <button class="btn btn-secondary" onclick="doFeel()">Answer</button>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center"><h3 id="message"></h3></div>
+        <div class="col-3"></div>
+        <img id="imageViewer" class="col-6" src="" />
+        <div class="col-3"></div>
+
+    </div>
+<script>
+    function doFeel() {
+            $.ajax({
+                url: "https://yesno.wtf/api",
+                type: "GET",
+                success: (data) => {
+                    $('#imageViewer').attr('src', data.image);
+                    $('#message').text( data.answer);
+
+                }
+            });
+        }
+</script>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="WPFPart.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFPart"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <local:PathSelector Grid.Row="0" SelectedPath="{Binding Main.ImagePath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,Source={StaticResource Locator}}" ></local:PathSelector>
+            <Image  Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="{Binding Main.ImageElement, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,Source={StaticResource Locator}}"/>
+        </Grid>
+        <GridSplitter Grid.Column="1" Background="LightGray" Width="5"/>
+        <StackPanel Grid.Column="2">
+            <Button Margin="20,10,20,10" Command="{Binding Main.saveImageClick, Source={StaticResource Locator}}"> Zapisz na dysku</Button>
+            <Button Margin="10,10,10,10" Command="{Binding Main.randomImageClick, Source={StaticResource Locator}}">Pokaż losową fotografie</Button>
+        </StackPanel>
+    </Grid>
+    
+</Window>
